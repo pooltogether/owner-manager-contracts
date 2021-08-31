@@ -18,7 +18,7 @@ describe('Test Set Name', () => {
     })
     describe("setManager()", ()=>{
         it('Can set manager', async () => {
-            await ownerOrManager.setManager(wallet2.address)
+            expect(await ownerOrManager.setManager(wallet2.address)).to.emit(ownerOrManager, 'ManagerTransferred')
             expect(await ownerOrManager.manager()).to.equal(wallet2.address)
         })
     })

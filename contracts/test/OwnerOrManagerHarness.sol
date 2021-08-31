@@ -7,6 +7,8 @@ import "hardhat/console.sol";
 
 contract OwnerOrManagerHarness is OwnerOrManager {
 
+    event ReallyCoolEvent(address);
+
     constructor() public {
         __Ownable_init();
         
@@ -16,6 +18,9 @@ contract OwnerOrManagerHarness is OwnerOrManager {
     function protectedFunction() public onlyManagerOrOwner {
         
         // do admin priviledges things
+
+
+        emit ReallyCoolEvent(msg.sender);
     }
 
 }

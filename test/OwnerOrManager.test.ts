@@ -1,8 +1,6 @@
 import { expect } from 'chai';
-import { deployMockContract, MockContract } from 'ethereum-waffle';
 import { Contract, ContractFactory, Signer, Wallet } from 'ethers';
 import { ethers } from 'hardhat';
-import { Interface } from 'ethers/lib/utils';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 
 describe('Test Set Name', () => {
@@ -24,8 +22,18 @@ describe('Test Set Name', () => {
     })
 
     describe("onlyManagerOrOwner()", ()=>{
-        it('permissions correctly', async () => {
+        it('non owner non manager cannot call permissioned function', async () => {
             await expect(ownerOrManager.connect(wallet3).protectedFunction()).to.be.revertedWith("Manager/caller-not-manager-or-owner")       
+        })
+
+        it('non owner non manager cannot call permissioned function', async () => {
+            await expect(ownerOrManager.protectedFunction()).to.emit(ownerOrManager, "ReallyCoolEvent")  
+            await ownerOrManager.setManager(wallet2.address)      
+            await expect(ownerOrManager.connect(wallet2).protectedFunction()).to.emit(ownerOrManager, "ReallyCoolEvent")
+        })
+
+        it('manager cannot set new manage', async ()=> {
+            await expect(ownerOrManager.connect(wallet2).protectedFunction()).to.be.reverted
         })
     })
 

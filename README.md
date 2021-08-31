@@ -1,29 +1,22 @@
-# PoolTogether Contracts Template
+# PoolTogether Owner Manager Contracts
+[![Coverage Status](https://coveralls.io/repos/github/pooltogether/owner-manager-contracts/badge.svg?branch=master)](https://coveralls.io/github/pooltogether/owner-manager-contracts?branch=master)
 
-[![Coverage Status](https://coveralls.io/repos/github/pooltogether/<NAME_OF_NEW_REPO>/badge.svg?branch=master)](https://coveralls.io/github/pooltogether/pooltogether-proxy-factory?branch=master)
+![Tests](https://github.com/pooltogether/owner-manager-contracts/actions/workflows/main.yml/badge.svg)
 
-![Tests](https://github.com/pooltogether/<NAME_OF_NEW_REPO>/actions/workflows/main.yml/badge.svg)
+Abstract ownable contract with additional manager role
 
-# Usage
-1. Clone this repo: `git clone git@github.com:pooltogether/pooltogether-contracts-template.git <DESTINATION REPO>`
-1. Create repo using Github GUI
-1. Set remote repo (`git remote add origin git@github.com:pooltogether/<NAME_OF_NEW_REPO>.git`),
-1. Checkout a new branch (`git checkout -b name_of_new_branch`) 
-1. Begin implementing as appropriate.
-1. Update this README
+Contract module based on Ownable which provides a basic access control mechanism, where
+there is an account (a draw manager for example) that can be granted exclusive access to
+specific functions.
+
+The manager account needs to be set using {setManager}.
+ 
+This module is used through inheritance. It will make available the modifier
+`onlyManager`, which can be applied to your functions to restrict their use to the manager.
 
 
 ## Usage
 This repo is setup to compile (`nvm use && yarn compile`) and successfully pass tests (`yarn test`)
-
-# Preset Packages
-## Generic Proxy Factory
-The minimal proxy factory is a powerful pattern used throughout PoolTogethers smart contracts. A [typescript package](https://www.npmjs.com/package/@pooltogether/pooltogether-proxy-factory-package) is available to use a generic deployed instance. This is typically used in the deployment script. 
-
-
-## Generic Registry
-The [generic registry](https://www.npmjs.com/package/@pooltogether/pooltogether-generic-registry) is a iterable singly linked list data structure that is commonly used throughout PoolTogethers contracts. Consider using this where appropriate or deploying in a seperate repo such as the (Prize Pool Registry)[https://github.com/pooltogether/pooltogether-prizepool-registry.
-
 
 
 # Installation

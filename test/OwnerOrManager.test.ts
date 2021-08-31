@@ -3,7 +3,7 @@ import { Contract, ContractFactory, Signer, Wallet } from 'ethers';
 import { ethers } from 'hardhat';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 
-describe('Test Set Name', () => {
+describe('OwnerOrManager', () => {
     let ownerOrManager: Contract
 
     let wallet1: SignerWithAddress, wallet2: SignerWithAddress, wallet3: SignerWithAddress, wallet4: SignerWithAddress

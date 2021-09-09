@@ -22,10 +22,9 @@ abstract contract OwnerOrManager is ContextUpgradeable, OwnableUpgradeable {
 
     /**
      * @dev Emitted when _manager has been changed.
-     * @param previousManager former _manager address.
      * @param newManager new _manager address.
      */
-    event ManagerTransferred(address indexed previousManager, address indexed newManager);
+    event ManagerTransferred(address indexed newManager);
 
     /**
      * @notice Gets current _manager.
@@ -67,7 +66,7 @@ abstract contract OwnerOrManager is ContextUpgradeable, OwnableUpgradeable {
 
         _manager = _newManager;
 
-        emit ManagerTransferred(_previousManager, _newManager);
+        emit ManagerTransferred(_newManager);
         return true;
     }
 }

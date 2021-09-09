@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/owner-manager-contracts",
-  "version": "0.0.1-beta.3",
+  "version": "1.0.0-beta.1",
   "description": "PoolTogether Owner Manager Contracts",
   "main": "index.js",
   "license": "MIT",

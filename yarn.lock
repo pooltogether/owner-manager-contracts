@@ -1099,6 +1099,11 @@
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts-upgradeable/-/contracts-upgradeable-4.3.1.tgz#d2fdbacd010f9bc2228d58f9d3d3db4e49818ea6"
   integrity sha512-vqS3gb1J5xlKc+7a931a5Qmg3HDR168E6aCfPY6lPrdFZV4TymN2+HVJNCqCo+KP2UMYDtqRsXu+KB/0L0E34g==
 
+"@openzeppelin/contracts@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.3.2.tgz#ff80affd6d352dbe1bbc5b4e1833c41afd6283b6"
+  integrity sha512-AybF1cesONZStg5kWf6ao9OlqTZuPqddvprc0ky7lrUVOjXeKpmQ2Y9FK+6ygxasb+4aic4O5pneFBfwVsRRRg==
+
 "@openzeppelin/hardhat-upgrades@1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@openzeppelin/hardhat-upgrades/-/hardhat-upgrades-1.6.0.tgz#735e1c70aea859e284937995e238fcfdea7b69d7"
@@ -1119,11 +1124,6 @@
     ethereumjs-util "^7.0.3"
     proper-lockfile "^4.1.1"
     solidity-ast "^0.4.15"
-
-"@pooltogether/pooltogether-proxy-factory-package@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@pooltogether/pooltogether-proxy-factory-package/-/pooltogether-proxy-factory-package-1.0.1.tgz#c096ac0b56e97716f1974efca7887364ebb67fb2"
-  integrity sha512-zG6ikHCmHOztrlXTba0CMlxs1XW0FnOXVVBLdegfhB+Onho//JMSxkrK9/Kwx0NMNx2wn5+QwGOL/mDQbIqYmQ==
 
 "@resolver-engine/core@^0.3.3":
   version "0.3.3"

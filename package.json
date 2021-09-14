@@ -23,7 +23,7 @@
     "test": "yarn clean && HIDE_DEPLOY_LOG=true && yarn hint && hardhat test"
   },
   "dependencies": {
-    "@openzeppelin/contracts-upgradeable": "^4.3.1"
+    "@openzeppelin/contracts": "^4.3.2"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "2.0.2",

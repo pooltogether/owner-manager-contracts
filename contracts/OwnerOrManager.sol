@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >= 0.6.0 <= 0.8.6;
 
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Context.sol";
 
 /**
 *  @title Abstract ownable contract with additional manager role
@@ -16,7 +16,7 @@ import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
  * `onlyManager`, which can be applied to your functions to restrict their use to
  * the manager.
  */
-abstract contract OwnerOrManager is ContextUpgradeable, OwnableUpgradeable {
+abstract contract OwnerOrManager is Context, Ownable {
 
     address private _manager;
 

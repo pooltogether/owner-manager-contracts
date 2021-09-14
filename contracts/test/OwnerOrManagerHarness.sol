@@ -9,8 +9,8 @@ contract OwnerOrManagerHarness is OwnerOrManager {
 
     event ReallyCoolEvent(address);
 
-    constructor() {
-        __Ownable_init();
+    constructor() OwnerOrManager(){
+        
         
     }
 

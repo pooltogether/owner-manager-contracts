@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/owner-manager-contracts",
-  "version": "0.0.1-beta.3",
+  "version": "1.0.0-beta.1",
   "description": "PoolTogether Owner Manager Contracts",
   "main": "index.js",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "test": "yarn clean && HIDE_DEPLOY_LOG=true && yarn hint && hardhat test"
   },
   "dependencies": {
-    "@openzeppelin/contracts-upgradeable": "^4.3.1"
+    "@openzeppelin/contracts": "^4.3.2"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "2.0.2",

@@ -1,26 +1,17 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity >= 0.6.0 <= 0.8.6;
+
+pragma solidity ^0.8.0;
 
 import "../OwnerOrManager.sol";
-import "hardhat/console.sol";
-
 
 contract OwnerOrManagerHarness is OwnerOrManager {
-
     event ReallyCoolEvent(address);
 
-    constructor() OwnerOrManager(){
-        
-        
-    }
+    constructor() OwnerOrManager() {}
 
-
-    function protectedFunction() public onlyManagerOrOwner {
-        
+    function protectedFunction() external onlyManagerOrOwner {
         // do admin priviledges things
-
 
         emit ReallyCoolEvent(msg.sender);
     }
-
 }

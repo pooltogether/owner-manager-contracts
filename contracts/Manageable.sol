@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.0;
 
-import "./external/openzeppelin/Ownable.sol";
+import "./Ownable.sol";
 
 /**
-*  @title Abstract ownable contract with additional manager role
+ * @title Abstract manageable contract that can be inherited by other contracts
  * @notice Contract module based on Ownable which provides a basic access control mechanism, where
  * there is an owner and a manager that can be granted exclusive access to specific functions.
  *
@@ -20,19 +20,18 @@ import "./external/openzeppelin/Ownable.sol";
  * This module is used through inheritance. It will make available the modifier
  * `onlyManager`, which can be applied to your functions to restrict their use to
  * the manager.
- *
- *
  */
-abstract contract OwnerOrManager is Ownable {
-
+abstract contract Manageable is Ownable {
     address private _manager;
-    address private _pendingOwner;
 
     /**
      * @dev Emitted when `_manager` has been changed.
+     * @param previousManager previous `_manager` address.
      * @param newManager new `_manager` address.
      */
-    event ManagerTransferred(address indexed newManager);
+    event ManagerTransferred(address indexed previousManager, address indexed newManager);
+
+    /* ============ External Functions ============ */
 
     /**
      * @notice Gets current `_manager`.
@@ -40,47 +39,6 @@ abstract contract OwnerOrManager is Ownable {
      */
     function manager() public view virtual returns (address) {
         return _manager;
-    }
-
-    /**
-     * @notice Gets current `_pendingOwner`.
-     * @return Current `_pendingOwner` address.
-     */
-    function pendingOwner() external view virtual returns (address) {
-        return _pendingOwner;
-    }
-
-    /**
-    * @dev Throws if called by any account other than the `pendingOwner`.
-    */
-    modifier onlyPendingOwner() {
-        require(_msgSender() == _pendingOwner, "OwnerOrManager/caller-not-pendingOwner");
-        _;
-    }
-
-    /**
-     * @dev Throws if called by any account other than the manager.
-     */
-    modifier onlyManagerOrOwner() {
-        require(manager() == _msgSender() || owner() == _msgSender(), "OwnerOrManager/caller-not-manager-or-owner");
-        _;
-    }
-
-    /**
-    * @dev Allows current owner to set the pendingOwner address.
-    * @param _newOwner Address to transfer ownership to.
-    */
-    function transferOwnership(address _newOwner) public override onlyOwner {
-        require(_newOwner != address(0), "OwnerOrManager/pendingOwner-not-zero-address");
-        _pendingOwner = _newOwner;
-    }
-
-    /**
-    * @dev Allows the pendingOwner address to finalize the transfer.
-    */
-    function claimOwnership() external onlyPendingOwner {
-        _setOwner(_pendingOwner);
-        _pendingOwner = address(0);
     }
 
     /**
@@ -93,19 +51,31 @@ abstract contract OwnerOrManager is Ownable {
         return _setManager(_newManager);
     }
 
+    /* ============ Internal Functions ============ */
+
     /**
      * @notice Set or change of manager.
      * @param _newManager New _manager address.
      * @return Boolean to indicate if the operation was successful or not.
      */
-    function _setManager(address _newManager) internal returns (bool) {
+    function _setManager(address _newManager) private returns (bool) {
         address _previousManager = _manager;
 
-        require(_newManager != _previousManager, "OwnerOrManager/existing-manager-address");
+        require(_newManager != _previousManager, "Manageable/existing-manager-address");
 
         _manager = _newManager;
 
-        emit ManagerTransferred(_newManager);
+        emit ManagerTransferred(_previousManager, _newManager);
         return true;
+    }
+
+    /* ============ Modifier Functions ============ */
+
+    /**
+     * @dev Throws if called by any account other than the manager.
+     */
+    modifier onlyManager() {
+        require(manager() == _msgSender(), "Manageable/caller-not-manager");
+        _;
     }
 }

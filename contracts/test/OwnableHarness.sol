@@ -2,14 +2,14 @@
 
 pragma solidity ^0.8.0;
 
-import "../OwnerOrManager.sol";
+import "../Ownable.sol";
 
-contract OwnerOrManagerHarness is OwnerOrManager {
+contract OwnableHarness is Ownable {
     event ReallyCoolEvent(address);
 
-    constructor() OwnerOrManager() {}
+    constructor() Ownable() {}
 
-    function protectedFunction() external onlyManagerOrOwner {
+    function protectedFunction() external onlyOwner {
         // do admin priviledges things
 
         emit ReallyCoolEvent(msg.sender);

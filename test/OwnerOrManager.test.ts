@@ -89,10 +89,14 @@ describe('OwnerOrManager', () => {
             expect(await ownerOrManager.manager()).to.equal(wallet2.address);
         });
 
-        it('should fail to set manager to address zero', async () => {
-            await expect(ownerOrManager.setManager(AddressZero)).to.be.revertedWith(
-                'OwnerOrManager/manager-not-zero-address',
-            );
+        it('should set manager to address zero', async () => {
+            await ownerOrManager.setManager(wallet2.address);
+
+            expect(await ownerOrManager.setManager(AddressZero))
+                .to.emit(ownerOrManager, 'ManagerTransferred')
+                .withArgs(AddressZero);
+
+            expect(await ownerOrManager.manager()).to.equal(AddressZero);
         });
 
         it('should fail to set manager if already manager', async () => {

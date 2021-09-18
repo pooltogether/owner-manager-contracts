@@ -101,7 +101,6 @@ abstract contract OwnerOrManager is Ownable {
     function _setManager(address _newManager) internal returns (bool) {
         address _previousManager = _manager;
 
-        require(_newManager != address(0), "OwnerOrManager/manager-not-zero-address");
         require(_newManager != _previousManager, "OwnerOrManager/existing-manager-address");
 
         _manager = _newManager;

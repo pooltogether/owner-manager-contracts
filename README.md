@@ -3,17 +3,18 @@
 
 ![Tests](https://github.com/pooltogether/owner-manager-contracts/actions/workflows/main.yml/badge.svg)
 
-Abstract ownable contract with additional manager role
+Abstract ownable and manageable contracts that can be inherited by other contracts to provide a basic access control mechanism, where
+there is an owner and a manager that can be granted exclusive access to specific functions.
 
-Contract module based on Ownable which provides a basic access control mechanism, where
-there is an account (a draw manager for example) that can be granted exclusive access to
-specific functions.
-
-The manager account needs to be set using {setManager}.
+The `owner` is first set by passing the address of the `initialOwner` to the Ownable constructor.
  
-This module is used through inheritance. It will make available the modifier
-`onlyManager`, which can be applied to your functions to restrict their use to the manager.
+The owner account can be transferred through a two steps process:
+1. The current `owner` calls `transferOwnership` to set a `pendingOwner`
+2. The `pendingOwner` calls `acceptOwnership` to accept the ownership transfer
 
+The manager account needs to be set using `setManager`.
+
+This module is used through inheritance. It will make available the modifiers `onlyManager`, `onlyOwner` and `onlyManagerOrOwner`, which can be applied to your functions to restrict their use to the manager and/or the owner.
 
 ## Usage
 This repo is setup to compile (`nvm use && yarn compile`) and successfully pass tests (`yarn test`)

@@ -1,0 +1,23 @@
+{
+  "printWidth": 100,
+  "tabWidth": 4,
+    "overrides": [
+      {
+        "files": "*.*.{ts,js}",
+        "options": {
+          "parser": "typescript",
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "singleQuote": true
+        }
+      },
+      {
+        "files": "*.sol",
+        "options": {
+          "printWidth": 100,
+          "bracketSpacing": true,
+          "explicitTypes": "always"
+        }
+      }
+    ]
+}

@@ -56,19 +56,41 @@ describe('Manageable', () => {
         });
     });
 
-    describe('onlyManagerOrOwner()', () => {
+    describe('onlyManager()', () => {
         it('should fail to call permissioned function if not manager', async () => {
-            await expect(manageable.connect(wallet3).protectedFunction()).to.be.revertedWith(
+            await expect(manageable.connect(wallet3).protectedFunctionManager()).to.be.revertedWith(
                 'Manageable/caller-not-manager',
             );
         });
 
         it('should call permissioned function if manager', async () => {
             await manageable.setManager(wallet2.address);
-            await expect(manageable.connect(wallet2).protectedFunction()).to.emit(
+            await expect(manageable.connect(wallet2).protectedFunctionManager()).to.emit(
                 manageable,
                 'ReallyCoolEvent',
             );
+        });
+    });
+
+    describe('onlyManagerOrOwner()', () => {
+        it('should fail to call permissioned function if not manager or owner', async () => {
+            await expect(
+                manageable.connect(wallet3).protectedFunctionManagerOrOwner(),
+            ).to.be.revertedWith('Manageable/caller-not-manager-or-owner');
+        });
+
+        it('should call permissioned function if manager', async () => {
+            await manageable.setManager(wallet2.address);
+            await expect(manageable.connect(wallet2).protectedFunctionManagerOrOwner()).to.emit(
+                manageable,
+                'ReallyCoolEvent',
+            );
+        });
+
+        it('should call permissioned function if owner', async () => {
+            await expect(
+                manageable.connect(contractsOwner).protectedFunctionManagerOrOwner(),
+            ).to.emit(manageable, 'ReallyCoolEvent');
         });
     });
 });

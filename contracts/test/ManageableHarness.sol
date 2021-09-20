@@ -7,13 +7,13 @@ import "../Manageable.sol";
 contract ManageableHarness is Manageable {
     event ReallyCoolEvent(address);
 
-    constructor(address _initialOwner)
-        Manageable()
-        Ownable(_initialOwner) {}
+    constructor(address _initialOwner) Manageable() Ownable(_initialOwner) {}
 
-    function protectedFunction() external onlyManager {
-        // do admin priviledges things
+    function protectedFunctionManager() external onlyManager {
+        emit ReallyCoolEvent(msg.sender);
+    }
 
+    function protectedFunctionManagerOrOwner() external onlyManagerOrOwner {
         emit ReallyCoolEvent(msg.sender);
     }
 }

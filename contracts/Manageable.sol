@@ -78,4 +78,12 @@ abstract contract Manageable is Ownable {
         require(manager() == msg.sender, "Manageable/caller-not-manager");
         _;
     }
+
+    /**
+     * @dev Throws if called by any account other than the manager or the owner.
+     */
+    modifier onlyManagerOrOwner() {
+        require(manager() == msg.sender || owner() == msg.sender, "Manageable/caller-not-manager-or-owner");
+        _;
+    }
 }

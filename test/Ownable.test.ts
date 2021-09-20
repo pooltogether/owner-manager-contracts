@@ -107,10 +107,7 @@ describe('Ownable', () => {
         });
 
         it('should call permissioned function if owner', async () => {
-            await expect(ownable.protectedFunction()).to.emit(
-                ownable,
-                'ReallyCoolEvent',
-            );
+            await expect(ownable.protectedFunction()).to.emit(ownable, 'ReallyCoolEvent');
         });
     });
 });

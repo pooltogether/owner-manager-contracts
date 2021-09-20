@@ -9,17 +9,17 @@ import "./Ownable.sol";
  * @notice Contract module based on Ownable which provides a basic access control mechanism, where
  * there is an owner and a manager that can be granted exclusive access to specific functions.
  *
- * By default, the owner is the deployer of the contract.
+ * The `owner` is first set by passing the address of the `initialOwner` to the Ownable constructor.
  *
- * The owner account is set through a two steps process.
+ * The owner account can be transferred through a two steps process:
  *      1. The current `owner` calls {transferOwnership} to set a `pendingOwner`
  *      2. The `pendingOwner` calls {acceptOwnership} to accept the ownership transfer
  *
  * The manager account needs to be set using {setManager}.
  *
- * This module is used through inheritance. It will make available the modifier
- * `onlyManager`, which can be applied to your functions to restrict their use to
- * the manager.
+ * This module is used through inheritance. It will make available the modifiers
+ * `onlyManager`, `onlyOwner` and `onlyManagerOrOwner`, which can be applied to your functions
+ * to restrict their use to the manager and/or the owner.
  */
 abstract contract Manageable is Ownable {
     address private _manager;

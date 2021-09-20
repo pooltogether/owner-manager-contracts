@@ -8,17 +8,14 @@ pragma solidity ^0.8.0;
  * there is an account (an owner) that can be granted exclusive access to
  * specific functions.
  *
- * By default, the owner is the deployer of the contract.
+ * The `owner` is first set by passing the address of the `initialOwner` to the Ownable constructor.
  *
- * The owner account is set through a two steps process.
+ * The owner account can be transferred through a two steps process:
  *      1. The current `owner` calls {transferOwnership} to set a `pendingOwner`
  *      2. The `pendingOwner` calls {acceptOwnership} to accept the ownership transfer
  *
- * The manager account needs to be set using {setManager}.
- *
  * This module is used through inheritance. It will make available the modifier
- * `onlyOwner`, which can be applied to your functions to restrict their use to
- * the owner.
+ * `onlyOwner`, which can be applied to your functions to restrict their use to the owner.
  */
 abstract contract Ownable {
     address private _owner;

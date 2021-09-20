@@ -19,7 +19,7 @@ describe('Manageable', () => {
 
         const manageableFactory = await ethers.getContractFactory('ManageableHarness');
 
-        manageable = await manageableFactory.deploy();
+        manageable = await manageableFactory.deploy(contractsOwner.address);
     });
 
     describe('manager()', () => {

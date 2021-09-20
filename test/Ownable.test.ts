@@ -19,7 +19,7 @@ describe('Ownable', () => {
 
         const ownableFactory = await ethers.getContractFactory('OwnableHarness');
 
-        ownable = await ownableFactory.deploy();
+        ownable = await ownableFactory.deploy(contractsOwner.address);
     });
 
     describe('owner()', () => {

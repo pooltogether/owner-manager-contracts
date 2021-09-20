@@ -2,8 +2,6 @@
 
 pragma solidity ^0.8.0;
 
-import "./external/openzeppelin/Context.sol";
-
 /**
  * @title Abstract ownable contract that can be inherited by other contracts
  * @notice Contract module which provides a basic access control mechanism, where
@@ -45,7 +43,7 @@ abstract contract Ownable is Context {
      * @notice Initializes the contract setting the deployer as the initial owner.
      */
     constructor() {
-        _setOwner(_msgSender());
+        _setOwner(msg.sender);
     }
 
     /* ============ External Functions ============ */
@@ -116,7 +114,7 @@ abstract contract Ownable is Context {
      * @dev Throws if called by any account other than the owner.
      */
     modifier onlyOwner() {
-        require(owner() == _msgSender(), "Ownable/caller-not-owner");
+        require(owner() == msg.sender, "Ownable/caller-not-owner");
         _;
     }
 
@@ -124,7 +122,7 @@ abstract contract Ownable is Context {
     * @dev Throws if called by any account other than the `pendingOwner`.
     */
     modifier onlyPendingOwner() {
-        require(_msgSender() == _pendingOwner, "Ownable/caller-not-pendingOwner");
+        require(msg.sender == _pendingOwner, "Ownable/caller-not-pendingOwner");
         _;
     }
 }

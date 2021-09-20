@@ -73,7 +73,7 @@ abstract contract Ownable is Context {
      * NOTE: Renouncing ownership will leave the contract without an owner,
      * thereby removing any functionality that is only available to the owner.
      */
-    function renounceOwnership() public virtual onlyOwner {
+    function renounceOwnership() external virtual onlyOwner {
         _setOwner(address(0));
     }
 
@@ -81,7 +81,7 @@ abstract contract Ownable is Context {
     * @notice Allows current owner to set the `_pendingOwner` address.
     * @param _newOwner Address to transfer ownership to.
     */
-    function transferOwnership(address _newOwner) public onlyOwner {
+    function transferOwnership(address _newOwner) external onlyOwner {
         require(_newOwner != address(0), "Ownable/pendingOwner-not-zero-address");
 
         _pendingOwner = _newOwner;

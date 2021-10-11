@@ -1,7 +1,6 @@
 # PoolTogether Owner Manager Contracts
-[![Coverage Status](https://coveralls.io/repos/github/pooltogether/owner-manager-contracts/badge.svg?branch=master)](https://coveralls.io/github/pooltogether/owner-manager-contracts?branch=master)
-
 ![Tests](https://github.com/pooltogether/owner-manager-contracts/actions/workflows/main.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/pooltogether/owner-manager-contracts/badge.svg?branch=master)](https://coveralls.io/github/pooltogether/owner-manager-contracts?branch=master)
 
 Abstract ownable and manageable contracts that can be inherited by other contracts to provide a basic access control mechanism, where
 there is an owner and a manager that can be granted exclusive access to specific functions.

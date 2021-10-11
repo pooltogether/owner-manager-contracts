@@ -12,7 +12,7 @@ pragma solidity ^0.8.0;
  *
  * The owner account can be transferred through a two steps process:
  *      1. The current `owner` calls {transferOwnership} to set a `pendingOwner`
- *      2. The `pendingOwner` calls {acceptOwnership} to accept the ownership transfer
+ *      2. The `pendingOwner` calls {claimOwnership} to accept the ownership transfer
  *
  * This module is used through inheritance. It will make available the modifier
  * `onlyOwner`, which can be applied to your functions to restrict their use to the owner.
